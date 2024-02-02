@@ -1,0 +1,45 @@
+{
+	"title": "remap curly",
+	"rules": [
+		{
+			"description": "remap curly",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "quote",
+						"modifiers": {
+							"mandatory": [
+								"right_control"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "8",
+							"modifiers": "left_option"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "non_us_pound",
+						"modifiers": {
+							"mandatory": [
+								"right_control"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "9",
+							"modifiers": "left_option"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		}
+	]
+}
+

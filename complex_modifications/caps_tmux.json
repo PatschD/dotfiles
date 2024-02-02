@@ -1,0 +1,22 @@
+{
+  "title": "remap caps lock for tmux",
+  "rules": [
+    {
+      "description": "remap caps lock",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "b",
+              "modifiers": "left_control"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

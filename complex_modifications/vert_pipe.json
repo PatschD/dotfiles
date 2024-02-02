@@ -1,0 +1,25 @@
+{
+  "title": "remap pipe",
+  "rules": [
+    {
+      "description": "remap pipe",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "7",
+            "modifiers": {
+              "mandatory": ["right_control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "7",
+              "modifiers": "left_option"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
