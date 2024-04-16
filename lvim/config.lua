@@ -41,6 +41,17 @@ vim.opt.shiftwidth = 2            -- the number of spaces inserted for each inde
 vim.opt.tabstop = 2               -- insert 2 spaces for a tab
 vim.opt.numberwidth = 2           -- set number column width to 2 {default 4}
 
+
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
+
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 local _, actions = pcall(require, "telescope.actions")
