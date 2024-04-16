@@ -14,9 +14,9 @@ export ZSH="$HOME/.oh-my-zsh"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-alias vim="lvim" 
+alias vim="nvim" 
 alias tg="tgpt chat" 
-alias v="lvim" 
+alias v="nvim" 
 
 tt () {
   ~/dotfiles/scripts/manage_tmux "$@"
