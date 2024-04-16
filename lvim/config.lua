@@ -19,7 +19,10 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Close buffers
 keymap("n", "<S-q>", ":BufferKill<CR>", opts)
+
 vim.keymap.set("n", "<Space>lg", "<cmd>lua require('zippy').insert_print()<CR>")
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 lvim.builtin.terminal.open_mapping = "<c-t>"
 lvim.builtin.alpha.active = false
 
@@ -84,6 +87,12 @@ lvim.plugins = {
     opts = {
       -- options
     },
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
     'AlexvZyl/nordic.nvim',
