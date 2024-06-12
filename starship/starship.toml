@@ -1,8 +1,16 @@
 add_newline = false
 
+# format = """
+# [→](bold green) $directory$git_branch$git_status
+# """
+#
 format = """
-[→](bold green) $directory$git_branch$git_status
+$character $directory$git_branch$git_status
 """
+
+[character]
+success_symbol = '[➜](bold green) '
+error_symbol = '[➜](bold red) '
 
 [git_branch]
 symbol = " "
