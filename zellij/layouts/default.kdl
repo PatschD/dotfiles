@@ -8,8 +8,8 @@ layout {
                 format_space "#[bg=10]"
 
                 mode_normal        "{name} "
-                mode_tmux          "{name} "
-                mode_locked        "{name} "
+                mode_tmux          "  "
+                mode_locked        "#[fg=0,bg=10, bold]  "
                 mode_resize        "{name} "
                 mode_pane          "{name} "
                 mode_tab           "{name} "
@@ -21,8 +21,11 @@ layout {
                 mode_session       "{name} "
                 mode_move          "{name} "
 
-                tab_normal   "{index}:{name}  "
-                tab_active   "{index}:{name}* "
+                tab_normal              "#[fg=0,bg=10]{index}:{name}  "
+                tab_normal_fullscreen   "#[fg=0,bg=10]{index}:{name} [] "
+
+                tab_active              "#[fg=0,bg=10]{index}:{name}* "
+                tab_active_fullscreen   "#[fg=0,bg=10]{index}:{name}*[] "
             }
         }
     }
