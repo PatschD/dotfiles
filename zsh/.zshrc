@@ -20,7 +20,7 @@ tt () {
   ~/dotfiles/scripts/manage_tmux "$@"
 }
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting vi-mode)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 bindkey -M viins 'jk' vi-cmd-mode
