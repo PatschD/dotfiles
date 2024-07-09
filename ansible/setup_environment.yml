@@ -63,6 +63,14 @@
       args:
         creates: "~/.oh-my-zsh"
 
+    - name: Install Oh My Zsh plugins
+      become: no # Run as the user, not root
+      shell: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+    - name: Install Oh My Zsh plugins
+      become: no # Run as the user, not root
+      shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
     - name: Clone dotfiles repository
       git:
         repo: "{{ github_repo }}"
