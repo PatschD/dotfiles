@@ -1,0 +1,75 @@
+- name: Set up new environment
+  # hosts: localhost
+  # mystifying_tesla
+  become: yes # This will use sudo for tasks that require it
+  hosts: docker_containers
+  connection: docker
+  gather_facts: no
+
+  vars:
+    github_repo: "https://github.com/PatschD/dotfiles"
+    dotfiles_dir: "~/dotfiles"
+    ssh_key_file: "~/.ssh/id_rsa"
+    neovim_download_url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - zsh
+          - tmux
+          - fd-find # 'fd' is usually packaged as 'fd-find' in apt
+          - fzf
+          - git
+          - zoxide
+          - curl
+        state: present
+
+    - name: Download Neovim
+      get_url:
+        url: "{{ neovim_download_url }}"
+        dest: "/tmp/nvim-linux64.tar.gz"
+        mode: "0644"
+
+    - name: Remove existing Neovim installation
+      file:
+        path: /opt/nvim
+        state: absent
+
+    - name: Extract Neovim
+      unarchive:
+        src: "/tmp/nvim-linux64.tar.gz"
+        dest: /opt
+        remote_src: yes
+
+    - name: Create symlink for Neovim
+      file:
+        src: "/opt/nvim-linux64/bin/nvim"
+        dest: "/usr/local/bin/nvim"
+        state: link
+
+    - name: Install Starship
+      shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
+      args:
+        creates: /usr/local/bin/starship
+
+    - name: Install Oh My Zsh
+      become: no # Run as the user, not root
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+      args:
+        creates: "~/.oh-my-zsh"
+
+    - name: Clone dotfiles repository
+      git:
+        repo: "{{ github_repo }}"
+        dest: "{{ dotfiles_dir }}"
+        version: main
+
+    - name: Run setup script from dotfiles
+      command: "{{ dotfiles_dir }}/install.sh"
+      args:
+        chdir: "{{ dotfiles_dir }}"
