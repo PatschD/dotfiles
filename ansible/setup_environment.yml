@@ -1,6 +1,4 @@
 - name: Set up new environment
-  # hosts: localhost
-  # mystifying_tesla
   become: yes # This will use sudo for tasks that require it
   hosts: docker_containers
   connection: docker
