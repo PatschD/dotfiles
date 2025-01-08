@@ -1,0 +1,15 @@
+font-size = 15
+font-family = Berkeley Mono
+font-thicken = true
+
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+
+shell-integration = zsh
+
+theme = Kanagawa Wave
+
+window-padding-balance = true
+keybind = ctrl+shift+s=write_scrollback_file:paste
+
